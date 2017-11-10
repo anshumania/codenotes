@@ -1,6 +1,7 @@
 ## Publishing GitHub Pages to a custom (.ca) domain
 
 Assume that you bought the domain acanadiandomain.ca from canspace.ca or from any registered domain registrar at CIRA
+The instructions below are to setup [both the apex and subdomain](https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/)
 
 ### At GitHub 
 1. Follow the instructions [to setup a www subdomain](https://help.github.com/articles/setting-up-a-www-subdomain/)
@@ -14,11 +15,13 @@ Assume that you bought the domain acanadiandomain.ca from canspace.ca or from an
 5. For a preliminary setup let's setup the www subdomain only
 6. Add a CNAME entry for www.acanadiandomain.ca to YOUR-GITHUB-USERNAME.github.io 
 7. Add an A entry for acanadiandomain.ca to the IP addresses listed [here](https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider) 
-8. You may want to check if your DNS provider supports ANAME or ALIAS. Could not find entries for that while creating DNS entry records in canspace.ca so I assume that it does not.
-9. This is how the final setup may look like ![canspace-manage-dns](https://anshumania.github.io/codenotes/images/githubpages-canspace-manage-dns.png)
+8. Remove the A entry for the default ipadress provided by canspace.ca because you do not need their domain forwarding
+9. You may want to check if your DNS provider supports ANAME or ALIAS. Could not find entries for that while creating DNS entry records in canspace.ca so I assume that it does not.
+10. This is how the final setup may look like 
+![canspace-manage-dns](https://anshumania.github.io/codenotes/images/githubpages-canspace-manage-dns.png)
 
 ```shell
-# check if cname entries are correct
+# check if CNAME entries are correct
 $> dig www.acanadiandomain.ca +nostats +nocomments +nocmd
 ;www.acanadiandomain.ca.		 IN	A
 www.acanadiandomain.ca.	   14400 IN	CNAME	YOUR-USERNAME.github.io.
@@ -31,6 +34,16 @@ sni.github.map.fastly.net. 26	 IN	A		151.101.XX.XXX
 # you can also query a particular nameserver for example google to check propagation
 $> dig @8.8.8.8 www.acanadiandomain.ca +nostats +nocomments +nocmd
 
-# check if a entries are correct
+# check if A entries are correct
 $> dig +noall +answer acanadiandomain.ca
+acanadiandomain.ca.		11901	IN	A	192.30.252.154
+acanadiandomain.ca.		11901	IN	A	192.30.252.153
 ```
+
+### TroubleShooting
+1. Check at the minimal if your own dns has the right settings propagated
+2. Shift+f5 to force a refresh in your browser. 
+3. You may need to close your browser or clear your cached depending on your setup.
+4. Try incognito/private modes in your browser
+5. Add the http cache expires header to your html page
+6. If the CNAME and A entries are correct then github will [automatically set up the redirects appropriately](https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/)
