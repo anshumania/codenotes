@@ -15,7 +15,7 @@ Assume that you bought the domain acanadiandomain.ca from canspace.ca or from an
 6. Add a CNAME entry for www.acanadiandomain.ca to YOUR-GITHUB-USERNAME.github.io 
 7. Add an A entry for acanadiandomain.ca to the IP addresses listed [here](https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider) 
 8. You may want to check if your DNS provider supports ANAME or ALIAS. Could not find entries for that while creating DNS entry records in canspace.ca so I assume that it does not.
-9. This is how the final setup may look like ![canspace-manage-dns](https://anshumania.github.io/codenotes/githubpages/images/canspace-manage-dns.png)
+9. This is how the final setup may look like ![canspace-manage-dns](https://anshumania.github.io/codenotes/images/githubpages-canspace-manage-dns.png)
 
 ```markdown
 # check if cname entries are correct
