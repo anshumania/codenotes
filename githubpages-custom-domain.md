@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Publishing GitHub Pages to a custom (.ca) domain
 
 Assume that you bought the domain acanadiandomain.ca from canspace.ca or from any registered domain registrar at CIRA
 
