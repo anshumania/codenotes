@@ -18,19 +18,19 @@ Assume that you bought the domain acanadiandomain.ca from canspace.ca or from an
 9. This is how the final setup may look like ![canspace-manage-dns](https://anshumania.github.io/codenotes/images/githubpages-canspace-manage-dns.png)
 
 ```shell
-	# check if cname entries are correct
-	$> dig www.acanadiandomain.ca +nostats +nocomments +nocmd
-	;www.acanadiandomain.ca.		 IN	A
-	www.acanadiandomain.ca.	   14400 IN	CNAME	YOUR-USERNAME.github.io.
-	YOUR-USERNAME.github.io..  672	 IN	CNAME	sni.github.map.fastly.net.
-	sni.github.map.fastly.net. 26	 IN	A		151.101.XX.XXX
+# check if cname entries are correct
+$> dig www.acanadiandomain.ca +nostats +nocomments +nocmd
+;www.acanadiandomain.ca.		 IN	A
+www.acanadiandomain.ca.	   14400 IN	CNAME	YOUR-USERNAME.github.io.
+YOUR-USERNAME.github.io..  672	 IN	CNAME	sni.github.map.fastly.net.
+sni.github.map.fastly.net. 26	 IN	A		151.101.XX.XXX
 
-	# the above may take a while
-	# you can check dns propagation on the web at 
-	# https://dnschecker.org or https://www.whatsmydns.net
-	# you can also query a particular nameserver for example google to check propagation
-	$> dig @8.8.8.8 www.acanadiandomain.ca +nostats +nocomments +nocmd
+# the above may take a while
+# you can check dns propagation on the web at 
+# https://dnschecker.org or https://www.whatsmydns.net
+# you can also query a particular nameserver for example google to check propagation
+$> dig @8.8.8.8 www.acanadiandomain.ca +nostats +nocomments +nocmd
 
-	# check if a entries are correct
-    $> dig +noall +answer acanadiandomain.ca
+# check if a entries are correct
+$> dig +noall +answer acanadiandomain.ca
 ```
